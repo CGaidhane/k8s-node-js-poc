@@ -192,3 +192,13 @@ there is a Readiness probe failed: issue and we need to change initialdelaysecon
 
 jenkins will be up, use classic loadbalancer DNS name to access it
 
+Login with the following credentials
+  export SERVICE_IP=$(kubectl get svc --namespace jenkins jenkins --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+  echo "Jenkins URL: http://$SERVICE_IP/"
+  echo Username: user
+  echo Password: $(kubectl get secret --namespace jenkins jenkins -o jsonpath="{.data.jenkins-password}" | base64 -d)
+
+
+Blue/Green pipeline : 
+
+Create jenkins pipeline which will use jenkinsfile from code to deploy simple node js app
