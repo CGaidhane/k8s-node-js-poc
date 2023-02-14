@@ -201,4 +201,6 @@ Login with the following credentials
 
 Blue/Green pipeline : 
 
-Create jenkins pipeline which will use jenkinsfile from code to deploy simple node js app
+Create jenkins pipeline which will use jenkinsfile from code to deploy simple node js app.
+
+Issue Faced : Bitnami jenkins pod was having issue of installing kubectl/ any simple file creation in it. i was not able to switch to root user and pipeline was failing with error permission denied to create /sbin/kubectl
